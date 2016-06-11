@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "456145293828",
+    "firebase_url": "https://feedbackdeity.firebaseio.com",
+    "project_id": "feedbackdeity",
+    "storage_bucket": "feedbackdeity.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:456145293828:android:a6176e732552034b",
+        "android_client_info": {
+          "package_name": "com.example.harshit.feedbackdeity"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "456145293828-ls8a2u5d08l2tviu78ikjb0j99b9ehlt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCdeWtIwgcJsEmrDSy0vhJTIBprVJIycg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
