@@ -9,13 +9,22 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
+import com.firebase.client.Firebase;
+
 public class Feedback extends AppCompatActivity {
+
+    String key;
+    EditText feedback;
+
     public Feedback(){}
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feedback);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Bundle b = getIntent().getExtras();
+        key = b.getString("key");
+        feedback = (EditText) findViewById(R.id.Feedbck);
     }
 
     public boolean onOptionsItemSelected(MenuItem item){
@@ -28,12 +37,12 @@ public class Feedback extends AppCompatActivity {
     }
 
     public void submit_feedback(View v){
-        EditText e = (EditText) findViewById(R.id.edtInput);
-        String feedback = e.toString();
 
-
-
+        String fbck = feedback.getText().toString();
+        Firebase ref = new Firebase("https://feedbackdeity.firebaseio.com/");
+        ref.child("Feedback").child(key).setValue(fbck);
         Intent i = new Intent(this,Camera.class);
+        i.putExtra("key",key);
         startActivity(i);
     }
 

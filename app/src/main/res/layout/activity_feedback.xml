@@ -14,34 +14,29 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Thanks for visiting us!"
-        android:id="@+id/textView5"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Please share your experience and feedback."
         android:id="@+id/textView6"
-        android:layout_below="@+id/textView5"
         android:layout_alignParentStart="true" />
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="75dp">
+        <EditText
+            android:id ="@+id/Feedbck"
+            android:ems="18"
+            android:layout_width ="wrap_content"
+            android:layout_height ="wrap_content"
+            android:layout_weight ="1"
+            android:inputType="textCapSentences|textMultiLine"
+            android:maxLines ="15"
+            android:maxLength ="2000"
+            android:hint ="@string/compose_hint"
+            android:scrollHorizontally="false"
+            android:layout_below="@+id/textView6"
+            android:layout_alignParentStart="true"
+            android:layout_alignEnd="@+id/textView6" />
+    </android.support.design.widget.TextInputLayout>
 
-    <EditText
-        android:id ="@+id/edtInput"
-        android:layout_width ="wrap_content"
-        android:layout_height ="wrap_content"
-        android:layout_weight ="1"
-        android:inputType="textCapSentences|textMultiLine"
-        android:maxLines ="15"
-        android:maxLength ="2000"
-        android:hint ="@string/compose_hint"
-        android:scrollHorizontally="false"
-        android:layout_below="@+id/textView6"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="51dp"
-        android:layout_alignEnd="@+id/textView6" />
 
     <Button
         android:layout_width="wrap_content"
@@ -49,9 +44,9 @@
         android:text="PROCEED"
         android:id="@+id/button9"
         android:onClick="submit_feedback"
-        android:layout_alignParentBottom="true"
-        android:layout_alignEnd="@+id/textView5"
         android:background="@color/colorPrimary"
-        android:textColor="@color/white"/>
+        android:textColor="@color/white"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

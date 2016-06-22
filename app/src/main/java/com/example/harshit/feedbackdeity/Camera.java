@@ -13,6 +13,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.firebase.client.Firebase;
+
 import java.io.ByteArrayOutputStream;
 
 
@@ -21,6 +23,7 @@ public class Camera extends AppCompatActivity {
     Bitmap bitmap;
     ImageView image;
     String encoded_image;
+    String key;
 
     public Camera(){}
     @Override
@@ -31,6 +34,8 @@ public class Camera extends AppCompatActivity {
         image = (ImageView) findViewById(R.id.imageView);
         Intent cam = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);  // intent object to take picture
         startActivityForResult(cam, 100);
+        Bundle b = getIntent().getExtras();
+        key = b.getString("key");
     }
 
     public boolean onOptionsItemSelected(MenuItem item){
@@ -46,7 +51,7 @@ public class Camera extends AppCompatActivity {
         bitmap = (Bitmap)b.get("data");
         image.setImageBitmap(bitmap);
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.WEBP,100,outputStream);
+        bitmap.compress(Bitmap.CompressFormat.PNG,100,outputStream);
         byte[] image = outputStream.toByteArray();
         encoded_image = Base64.encodeToString(image,Base64.DEFAULT );
         Log.d("TAG",encoded_image);
@@ -55,11 +60,15 @@ public class Camera extends AppCompatActivity {
 
     public void save(View v){
         Intent i = new Intent(this,Signature.class);
+        Firebase ref = new Firebase("https://feedbackdeity.firebaseio.com/");
+        ref.child("Photo").child(key).setValue(encoded_image);
+        i.putExtra("key",key);
         startActivity(i);
     }
 
     public void skip(View v){
         Intent j = new Intent(this,Signature.class);
+        j.putExtra("key",key);
         startActivity(j);
     }
 
